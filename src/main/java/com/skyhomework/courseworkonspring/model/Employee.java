@@ -1,14 +1,18 @@
-package com.skyhomework.courseworkonspring;
+package com.skyhomework.courseworkonspring.model;
 import java.util.Objects;
 
 public class Employee {
 
     final private String firstName;
     final private String lastName;
+    private int department;
+    private int salary;
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, int dpt, int slr) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.department = dpt;
+        this.salary = slr;
     }
 
     // GETTERS
@@ -22,6 +26,24 @@ public class Employee {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    // SETTERS
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 
     @Override

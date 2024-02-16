@@ -1,5 +1,7 @@
-package com.skyhomework.courseworkonspring;
+package com.skyhomework.courseworkonspring.controller;
 
+import com.skyhomework.courseworkonspring.model.Employee;
+import com.skyhomework.courseworkonspring.service.EmployeeService;
 import com.skyhomework.courseworkonspring.Exception.EmployeeAlreadyAddedException;
 import com.skyhomework.courseworkonspring.Exception.EmployeeNotFoundException;
 import com.skyhomework.courseworkonspring.Exception.EmployeeStorageIsFullException;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.Map;
 
 
 @RestController
@@ -23,13 +25,14 @@ public class EmployeeController {
 
     @GetMapping(path="/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee add(@RequestParam("firstName") String f,
-                      @RequestParam("lastName") String l) {
+                        @RequestParam("lastName") String l,
+                        @RequestParam("dpt") int d,
+                        @RequestParam("slr") int s
+    ) {
         Employee empl;
         try {
-            empl = emplService.add(f, l);
-        } catch (EmployeeStorageIsFullException e) {
-            throw new RuntimeException(e);
-        } catch (EmployeeAlreadyAddedException e) {
+            empl = emplService.add(f, l, d, s);
+        } catch (EmployeeStorageIsFullException | EmployeeAlreadyAddedException e) {
             throw new RuntimeException(e);
         }
         return empl;
@@ -47,7 +50,7 @@ public class EmployeeController {
     }
     @GetMapping(path="/find", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee find(@RequestParam("firstName") String f,
-                       @RequestParam("lastName") String l){
+                         @RequestParam("lastName") String l){
         Employee empl;
         try {
             empl = emplService.find(f, l);
@@ -58,8 +61,8 @@ public class EmployeeController {
     }
 
     @GetMapping(path="/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ArrayList<Employee> all(){
-        return emplService.getEmployeeList();
+    public Map<String, Employee> all(){
+        return emplService.getEmployee();
     }
 
 }
