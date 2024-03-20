@@ -1,4 +1,4 @@
-package com.skyhomework.courseworkonspring;
+package com.skyhomework.courseworkonspring.service;
 
 import com.skyhomework.courseworkonspring.model.Employee;
 

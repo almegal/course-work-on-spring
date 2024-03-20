@@ -1,6 +1,5 @@
 package com.skyhomework.courseworkonspring.service;
 
-import com.skyhomework.courseworkonspring.Book;
 import com.skyhomework.courseworkonspring.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +8,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImp  implements Book {
-    private final EmployeeService emplService;
-    public BookServiceImp(EmployeeService emplService) {
+    private final EmployeeServiceImpl emplService;
+    public BookServiceImp(EmployeeServiceImpl emplService) {
         this.emplService = emplService;
     }
 
