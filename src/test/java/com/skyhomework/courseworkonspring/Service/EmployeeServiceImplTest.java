@@ -113,7 +113,7 @@ public class EmployeeServiceImplTest {
     public static Stream<Arguments> employeeSourceWithIncorrectNameOrLastName(){
         return Stream.of(
                 Arguments.of("Ivan4", "Ivanov", 1, 100_000),
-                Arguments.of("Ivan", "Ivan0v", 1, 100_000),
+                Arguments.of("Ivan ", "Ivanov", 1, 100_000),
                 Arguments.of("", "Ivanov", 1, 100_000),
                 Arguments.of("Ivan", "", 1, 100_000),
                 Arguments.of("Ivan", "I-vanov", 1, 100_000),
