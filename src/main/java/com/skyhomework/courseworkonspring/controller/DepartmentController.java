@@ -3,37 +3,42 @@ package com.skyhomework.courseworkonspring.controller;
 import com.skyhomework.courseworkonspring.service.DepartmentServiceImp;
 import com.skyhomework.courseworkonspring.model.Employee;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("departments/")
+@RequestMapping("department/")
 public class DepartmentController {
-    public final DepartmentServiceImp bookServiceImp;
+    public final DepartmentServiceImp departmentServiceImp;
 
-    public DepartmentController(DepartmentServiceImp bookServiceImp) {
-        this.bookServiceImp = bookServiceImp;
+    public DepartmentController(DepartmentServiceImp departmentServiceImp) {
+        this.departmentServiceImp = departmentServiceImp;
     }
-
-    @GetMapping(path="/all")
-    public Map<Integer, List<Employee>> getAll(){
-        return bookServiceImp.getAllEmployeeSplitDepartment();
+    // возвращает сотрудников, сгруппированых по отделам
+    @GetMapping(path="/employees")
+    public Map<Integer, List<Employee>> getAllEmployessFilterByDepartment(){
+        return departmentServiceImp.getAllEmployeeSplitDepartment();
     }
-    @GetMapping(path="/all-by-id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Employee> all(@RequestParam("department") int d){
-        return bookServiceImp.getEmployeeInDepartment(d);
+    //возвращает список сотрудников по департаменту.
+    @GetMapping(path="/{id}/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getAllEmployeesInDepartment(@PathVariable("id") int id){
+        return departmentServiceImp.getEmployeeInDepartment(id);
     }
-    @GetMapping(path = "/max-salary", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Employee getMaxSalaryInDepartment(@RequestParam("department") int d) {
-        return bookServiceImp.getMaxSalaryInDepartment(d);
+    //возвращает максимальную зарплату по департаменту.
+    @GetMapping(path = "/{id}/salary/max", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee getMaxSalaryInDepartment(@PathVariable("id") int id) {
+        return departmentServiceImp.getMaxSalaryInDepartment(id);
     }
-    @GetMapping(path = "/min-salary", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Employee getMinSalaryInDepartment(@RequestParam("department") int d) {
-        return bookServiceImp.getMinSalaryInDepartment(d);
+    //возвращает минимальную зарплату по департаменту.
+    @GetMapping(path = "/{id}/salary/min", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee getMinSalaryInDepartment(@PathVariable("id") int id) {
+        return departmentServiceImp.getMinSalaryInDepartment(id);
+    }
+    // возвращает сумму зарплат по департаменту.
+    @GetMapping(path = "/{id}/salary/sum", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer getSumSalaryByDeaprtment(@PathVariable("id") int id){
+        return 0;
     }
 }
