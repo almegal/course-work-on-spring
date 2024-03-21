@@ -1,6 +1,6 @@
 package com.skyhomework.courseworkonspring.controller;
 
-import com.skyhomework.courseworkonspring.service.BookServiceImp;
+import com.skyhomework.courseworkonspring.service.DepartmentServiceImp;
 import com.skyhomework.courseworkonspring.model.Employee;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +13,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("departments/")
-public class BookController {
-    public final BookServiceImp bookServiceImp;
+public class DepartmentController {
+    public final DepartmentServiceImp bookServiceImp;
 
-    public BookController(BookServiceImp bookServiceImp) {
+    public DepartmentController(DepartmentServiceImp bookServiceImp) {
         this.bookServiceImp = bookServiceImp;
     }
 

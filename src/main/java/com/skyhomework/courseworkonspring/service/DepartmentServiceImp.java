@@ -7,9 +7,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class BookServiceImp  implements Book {
+public class DepartmentServiceImp implements DepartmentService {
     private final EmployeeServiceImpl emplService;
-    public BookServiceImp(EmployeeServiceImpl emplService) {
+    public DepartmentServiceImp(EmployeeServiceImpl emplService) {
         this.emplService = emplService;
     }
 
