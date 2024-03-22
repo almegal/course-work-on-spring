@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     //Допустимое количество сотрудников в компании по умолчанию
-    private int maxEmployeesInCompany = 10;
+    private int maxEmployeesInCompany = 15;
     private final Map<String, Employee> employeeBook = new HashMap<>();
     // метод добавления
     @Override
