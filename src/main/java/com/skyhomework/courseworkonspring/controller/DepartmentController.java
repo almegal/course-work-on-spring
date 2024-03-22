@@ -36,7 +36,7 @@ public class DepartmentController {
     public Employee getMinSalaryInDepartment(@PathVariable("id") int id) {
         return departmentServiceImp.getMinSalaryInDepartment(id);
     }
-    // возвращает сумму зарплат по департаменту.
+    //возвращает сумму зарплат по департаменту.
     @GetMapping(path = "/{id}/salary/sum", produces = MediaType.APPLICATION_JSON_VALUE)
     public Integer getSumSalaryByDeaprtment(@PathVariable("id") int id){
         return departmentServiceImp.getSalarySumByDepartment(id);
