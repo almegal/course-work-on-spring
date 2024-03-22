@@ -23,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee add(String f, String l, int d, int s) {
         //проверяем что переданные значения валидные
         validateParams(f, l);
-        // делаем строки строки с Заглавной буквы
+        //делаем строки строки с Заглавной буквы
         String validName = changeStringToCapitalize(f);
         String validLastName = changeStringToCapitalize(l);
         // создаем экземпляр работника

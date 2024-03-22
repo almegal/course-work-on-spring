@@ -15,7 +15,7 @@ public class Employee {
         this.salary = slr;
     }
 
-    // GETTERS
+    //GETTERS
     public String getFullName() {
         return firstName + " " + lastName;
     }

@@ -4,7 +4,6 @@ import com.skyhomework.courseworkonspring.model.Employee;
 
 import java.util.List;
 import java.util.Map;
-
 public interface DepartmentService {
     public Employee getMinSalaryInDepartment(int id);
     public Employee getMaxSalaryInDepartment(int id);

@@ -38,7 +38,7 @@ public class DepartmentServiceImp implements DepartmentService {
                 // фильтруем каждый элемент по принципу равен dpt
                 .filter(e -> e.getDepartment() == dpt )
                 // получаем максимальное значение через компаратор который сравнивает
-                // каждые значение поля Salary у каждого Employee
+                //каждые значение поля Salary у каждого Employee
                 .max(Comparator.comparingInt(Employee::getSalary))
                 // если нет результата выбрасить исключение
                 .orElseThrow(() -> new EmployeeNotFoundException("такого отдела не существует"));
